@@ -6,7 +6,7 @@ package org.pebiblioteca
  * @param nombre Es el nombre del usuario
  */
 open class Usuario (val id:Int,val nombre:String){
-    private var listaLibros = mutableListOf<Libro>()
+    private var listaLibros = mutableListOf<ElementoBiblioteca>()
     init {
         require(nombre.isNotEmpty()){"El nombre no puede estar vacio."}
     }
@@ -14,14 +14,14 @@ open class Usuario (val id:Int,val nombre:String){
     /**
      * Agrega libro al listado de libros.
      */
-    fun agregarLibro(libro: Libro){
-        listaLibros.add(libro)
+    fun agregarLibro(elementoBiblioteca: ElementoBiblioteca){
+        listaLibros.add(elementoBiblioteca)
     }
 
     /**
      * Quita el libro de prestamos del usuario.
      */
-    fun quitarLibro(libro: Libro){
-        listaLibros.remove(libro)
+    fun quitarLibro(elementoBiblioteca: ElementoBiblioteca){
+        listaLibros.remove(elementoBiblioteca)
     }
 }
