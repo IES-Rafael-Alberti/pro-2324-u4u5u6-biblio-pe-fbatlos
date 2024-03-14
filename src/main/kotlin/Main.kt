@@ -1,7 +1,5 @@
 package org.pebiblioteca
 
-import java.util.UUID
-
 fun main() {
     val usuario1 = Usuario(1,"Jose")
     val usuario2 = Usuario(2,"Mario")
@@ -12,20 +10,20 @@ fun main() {
     val dvd1 = DVD("Mundial 2004")
     val revista1 = Revista("Mbappe al Madrid")
 
-    gestionBiblioteca.agregarLibro(libro1)
-    gestionBiblioteca.agregarLibro(libro2)
-    gestionBiblioteca.agregarLibro(libro3)
-    gestionBiblioteca.agregarLibro(dvd1)
-    gestionBiblioteca.agregarLibro(revista1)
+    gestionBiblioteca.agregarElemento(libro1)
+    gestionBiblioteca.agregarElemento(libro2)
+    gestionBiblioteca.agregarElemento(libro3)
+    gestionBiblioteca.agregarElemento(dvd1)
+    gestionBiblioteca.agregarElemento(revista1)
 
     gestionBiblioteca.registrarPrestamo(libro1,usuario1)
     gestionBiblioteca.registrarPrestamo(libro2,usuario2)
     gestionBiblioteca.registrarPrestamo(dvd1,usuario1)
 
-    gestionBiblioteca.mostrarLibros()
+    gestionBiblioteca.mostrarElementos()
 
-    gestionBiblioteca.devolverLibro(dvd1,usuario1)
+    gestionBiblioteca.devolverElemento(dvd1,usuario1)
 
-    gestionBiblioteca.mostrarLibros()
+    gestionBiblioteca.mostrarElementos()
 
 }

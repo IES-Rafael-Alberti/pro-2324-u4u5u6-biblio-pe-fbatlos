@@ -5,7 +5,7 @@ class GestorBiblioteca(val gestor:IGestorPrestamos) {
     /**
      * Agregará un libro al catalogo.
      */
-    fun agregarLibro(libro: ElementoBiblioteca){
+    fun agregarElemento(libro: ElementoBiblioteca){
         catalogo.aniadirAlCatalogo(libro)
     }
 
@@ -31,7 +31,7 @@ class GestorBiblioteca(val gestor:IGestorPrestamos) {
     /**
      * Se devolverá el libro y se anotará en el registro.
      */
-    fun devolverLibro(libro: ElementoBiblioteca,usuario: Usuario){
+    fun devolverElemento(libro: ElementoBiblioteca, usuario: Usuario){
         if (libro.estado == estadoLibro.prestado) {
             libro.estado = estadoLibro.diponible
             gestor.agregarAlRegistro(libro,usuario)
@@ -52,7 +52,7 @@ class GestorBiblioteca(val gestor:IGestorPrestamos) {
     /**
      * Retorna los libros segun su estado.
      */
-    fun mostrarLibros(){
+    fun mostrarElementos(){
         val librosPrestados = mutableListOf<ElementoBiblioteca>()
         println("\nElementos disponibles en la Biblioteca:\n")
         catalogo.elementoBibliotecas.forEach {
