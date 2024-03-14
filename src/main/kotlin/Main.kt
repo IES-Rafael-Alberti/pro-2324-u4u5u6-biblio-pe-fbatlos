@@ -8,6 +8,7 @@ fun main() {
     val libro2 = Libro(2,"Jose el cantante","Juan Guardado" ,2024,"Aventuras")
     val libro3 = Libro(3,"Klopp el ciego","Klopp" ,2020,"Deportes")
 
+
     gestionBiblioteca.agregarLibro(libro1)
     gestionBiblioteca.agregarLibro(libro2)
     gestionBiblioteca.agregarLibro(libro3)
