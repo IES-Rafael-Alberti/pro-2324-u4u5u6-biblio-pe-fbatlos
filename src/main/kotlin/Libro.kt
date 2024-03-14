@@ -1,6 +1,9 @@
 package org.pebiblioteca
 
-data class Libro(val id:Int, val titulo:String, val autor:String, val anioPubli:Int, val tematica:String, var estado:estadoLibro = estadoLibro.diponible){
+import java.util.*
+
+data class Libro( val titulo:String, val autor:String, val anioPubli:Int, val tematica:String, var estado:estadoLibro = estadoLibro.diponible){
+    val id: UUID? = UtilidadesBiblioteca().generarIdentificadorUnico()
     init {
         require(titulo.isNotEmpty()){"El titulo no puede estar vacio."}
         require(autor.isNotEmpty()){"El autor no puede estar vacio."}

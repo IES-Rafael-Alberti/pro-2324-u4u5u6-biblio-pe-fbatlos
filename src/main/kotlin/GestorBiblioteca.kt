@@ -63,12 +63,10 @@ class GestorBiblioteca(catalogo:Catalogo, val registro:RegistroPrestamos){
                 librosPrestados.add(it)
             }
         }
-
+        println("Libros prestados")
         if (librosPrestados.isEmpty()){
             println("No hemos prestado ninguno")
         }else{
-            println("Libros prestados")
-            librosPrestados.forEach { println(it) }
-        }
+        librosPrestados.forEach { println(it) }}
     }
 }
