@@ -1,29 +1,28 @@
 package org.pebiblioteca
 
-class GestorBiblioteca(catalogo:Catalogo, val registro:RegistroPrestamos){
-    val catalogoBiblioteca = catalogo
-
+class GestorBiblioteca():RegistroPrestamos() {
+    val catalogo = Catalogo()
     /**
      * Agregará un libro al catalogo.
      */
     fun agregarLibro(libro: Libro){
-        catalogoBiblioteca.aniadirAlCatalogo(libro)
+        catalogo.aniadirAlCatalogo(libro)
     }
 
     /**
      * Eliminará un libro del catalogo.
      */
     fun eliminarLibro(libro: Libro){
-        catalogoBiblioteca.eliminarDelCatalogo(libro)
+        catalogo.eliminarDelCatalogo(libro)
     }
 
     /**
      * Dejará constancia de prestamo del libro en el registro.
      */
-    fun registrarPrestamo(libro: Libro){
+    fun registrarPrestamo(libro: Libro,usuario: Usuario){
         if (libro.estado == estadoLibro.diponible) {
             libro.estado = estadoLibro.prestado
-            registro.agregarAlRegistro(libro.id, "Hemos prestado el libro ${libro.titulo}")
+            tomarPrestadoLibro(libro,usuario)
         }else{
             println("Ese libro ya esta prestado.")
         }
@@ -32,10 +31,10 @@ class GestorBiblioteca(catalogo:Catalogo, val registro:RegistroPrestamos){
     /**
      * Se devolverá el libro y se anotará en el registro.
      */
-    fun devolverLibro(libro: Libro){
+    fun devolverLibro(libro: Libro,usuario: Usuario){
         if (libro.estado == estadoLibro.prestado) {
             libro.estado = estadoLibro.diponible
-            registro.agregarAlRegistro(libro.id, "Hemos recibido el libro ${libro.titulo} del prestamo.")
+            agregarAlRegistro(libro,usuario)
         }else{
             println("El libro ya fue devuelto.")
         }
@@ -55,18 +54,20 @@ class GestorBiblioteca(catalogo:Catalogo, val registro:RegistroPrestamos){
      */
     fun mostrarLibros(){
         val librosPrestados = mutableListOf<Libro>()
-        println("Libros disponibles")
-        catalogoBiblioteca.libros.forEach {
+        println("\nLibros disponibles:\n")
+        catalogo.libros.forEach {
             if(disponivilidad(it)){
                 println(it.titulo)
             }else{
                 librosPrestados.add(it)
             }
         }
-        println("Libros prestados")
+        println("\nLibros prestados : \n")
         if (librosPrestados.isEmpty()){
             println("No hemos prestado ninguno")
         }else{
-        librosPrestados.forEach { println(it) }}
+        librosPrestados.forEach { println(it.titulo) }}
     }
+
+
 }

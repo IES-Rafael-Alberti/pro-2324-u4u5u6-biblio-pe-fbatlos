@@ -3,7 +3,7 @@ package org.pebiblioteca
 /**
  * Tenemos la clase que guardará los libros en forma de catalogo.
  */
-class Catalogo(){
+open class Catalogo(){
     val libros = mutableListOf<Libro>()
 
     /**
